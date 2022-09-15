@@ -6,78 +6,58 @@ namespace SupportBank
     {
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"./Transactions2014.csv");
-            
+            //Setting up of the Bank
             Bank SupportBank = new Bank();
-
-            foreach(string line in lines[1..])
-            {
-                string[] fields = line.Split(',');
-
-                string transactionDateTime  = fields[0];
-                string transactionDebtor    = fields[1];
-                string transactionCreditor  = fields[2];
-                string transactionNarrative = fields[3];
-                string transactionAmount    = fields[4];
-
-                SupportBank.AddToBankTransactions
-                    (new Transaction
-                        (
-                            transactionDateTime, 
-                            transactionDebtor, 
-                            transactionCreditor, 
-                            transactionNarrative, 
-                            transactionAmount
-                        )
-                    );
-
-                SupportBank.AddNewBankAccount(new Account(transactionDebtor  ));
-                SupportBank.AddNewBankAccount(new Account(transactionCreditor));
-            }
-
+            SupportBank.SeedBankWithTransactions("./Transactions2014.csv");
             SupportBank.UpdateAllBalances();
-            //Setting up of the Bank is finished.
 
-            //User interface begins:
-
-            string userInput;
-            List<string> checkValues = new List<string> {"1", "2", "3"};
-
-            do 
+            //User interface
+            string userInput = "1";
+            while (userInput != "0")
             {
-                Console.WriteLine("What would you like to do?");
-                Console.WriteLine("1. Print the balance of every account");
-                Console.WriteLine("2. Print the transaction history of a particular account");
-                Console.WriteLine("3. Terminate the program\n");
+                List<string> menuOptions = new List<string> {"1", "2", "0"};
 
-                userInput = Console.ReadLine();
-            }
-            while (!(checkValues.Contains(userInput)));
+                do 
+                {
+                    Console.WriteLine(@"
 
-            switch(userInput)
-            {
-                case "1":
-                    SupportBank.PrintAllBalances();
-                    break;
-                
-                case "2":
-                    string userAccountNameInput;
+===== Welcome to Support Bank =====
 
-                    do 
-                    {
-                        Console.WriteLine("Which account would you like to see?\n");
+What would you like to do?
 
-                        SupportBank.PrintAccountNames();
+1. Print the balance of every account
+2. Print the transaction history of a particular account
+0. Terminate the program
+                    ");         
 
-                        userAccountNameInput = Console.ReadLine();
-                    }
-                    while (!SupportBank.doesAccountExist(userAccountNameInput));
+                    userInput = Console.ReadLine();
+                }
+                while (!(menuOptions.Contains(userInput)));
 
-                    SupportBank.PrintAccountTransactions(userAccountNameInput);
-                    break;
-                case "3":
-                    Console.WriteLine("Goodbye! ('^')_/");
-                    break;                
+                switch(userInput)
+                {
+                    case "1":
+                        SupportBank.PrintAllBalances();
+                        break;
+                    
+                    case "2":
+                        string userAccountNameInput;
+
+                        do 
+                        {
+                            Console.WriteLine("Which account would you like to see?\n");
+                            SupportBank.PrintAccountNames();
+                            userAccountNameInput = Console.ReadLine();
+                        }
+                        while (!SupportBank.doesAccountExist(new Account(userAccountNameInput)));
+
+                        SupportBank.PrintAccountTransactions(userAccountNameInput);
+                        break;
+
+                    case "0":
+                        Console.WriteLine("\nGoodbye! ('^')_/\n");
+                        break;                
+                }
             }
         }       
     }

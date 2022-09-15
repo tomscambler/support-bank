@@ -8,8 +8,13 @@ namespace SupportBank
 
         public Account(string accountName)
         {
-            AccountName   = accountName;
+            AccountName    = accountName;
             AccountBalance = 0;
+        }
+
+        public void UpdateBalance(decimal transactionAmount)
+        {
+            AccountBalance += transactionAmount;
         }
   }
 }
