@@ -7,14 +7,14 @@ namespace SupportBank
         static void Main(string[] args)
         {
             string[] lines = System.IO.File.ReadAllLines(@"./Transactions2014.csv");
+             
+            Ledger SupportBankLedger = new Ledger();
 
-            string phrase = lines[1];
-
-            string[] fields = phrase.Split(',');
-
-            foreach (var field in fields)
+            foreach(string line in lines[1..])
             {
-            Console.WriteLine($"{field}");
+                string[] fields = line.Split(',');
+
+                SupportBankLedger.AddToLedger(new Transaction(fields[0], fields[1], fields[2], fields[3], fields[4]));
             }
         }       
     }

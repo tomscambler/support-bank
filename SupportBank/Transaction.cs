@@ -8,13 +8,13 @@ namespace SupportBank
         public string   TransactionNarrative{ get; }
         public decimal  TransactionAmount{ get;}
 
-        public Transaction(DateTime transactionDateTime, string transactionDebtor, string transactionCreditor, string transactionNarrative, decimal transactionAmount)
+        public Transaction(string transactionDateTime, string transactionDebtor, string transactionCreditor, string transactionNarrative, string transactionAmount)
         {
-            TransactionDateTime  = transactionDateTime;
+            TransactionDateTime  = DateTime.Parse(transactionDateTime);
             TransactionDebtor    = transactionDebtor;
             TransactionCreditor  = transactionCreditor;
             TransactionNarrative = transactionNarrative;
-            TransactionAmount    = transactionAmount;
+            TransactionAmount    = Convert.ToDecimal(transactionAmount);
         }
     }   
 }
