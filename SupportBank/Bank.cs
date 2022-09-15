@@ -11,14 +11,23 @@ namespace SupportBank
             BankTransactions = new List<Transaction>();    
         }
 
-        public bool AddNewBankAccount(Account newBankAccount)
+        public bool doesAccountExist(string possibleBankAccountName)
         {
             foreach( Account existingBankAccount in BankAccounts)
             {
-                if(existingBankAccount.AccountName == newBankAccount.AccountName)
+                if(existingBankAccount.AccountName == possibleBankAccountName)
                 {
-                    return false;
+                    return true;
                 }    
+            }
+            return false;
+        }
+
+        public bool AddNewBankAccount(Account newBankAccount)
+        {
+            if(doesAccountExist(newBankAccount.AccountName))
+            {
+                return false;
             }
             BankAccounts.Add(newBankAccount);
             return true;
@@ -58,7 +67,7 @@ namespace SupportBank
 
         public void PrintAllBalances()
         {
-            Console.WriteLine($"\n Account Name            Balance");
+            Console.WriteLine($"\nAccount Name            Balance");
             Console.WriteLine($"------------            -------");
 
             foreach(Account bankAccount in BankAccounts)
@@ -75,9 +84,19 @@ namespace SupportBank
                     creditOrDebit = "C";
                 }
                 //justify right (could be a conditional number of spaces?)
-                Console.WriteLine($"{bankAccount.AccountName}{tabSpacing}£{Math.Abs(bankAccount.AccountBalance):F2}\t{creditOrDebit}");
+                Console.WriteLine($"{bankAccount.AccountName}{tabSpacing}£ {Math.Abs(bankAccount.AccountBalance):F2}\t{creditOrDebit}");
             }
         }
+
+        public void PrintAccountNames()
+        {
+            foreach(Account bankAccount in BankAccounts)
+            {
+                Console.WriteLine($"{bankAccount.AccountName}");
+            }
+            Console.WriteLine("\n");
+        }
+
 
         public void PrintAccountTransactions(string accountName)
         {   
@@ -85,7 +104,7 @@ namespace SupportBank
             Console.WriteLine("Date:           Payer:          Amount:         Narrative:");
             foreach (Transaction transaction in BankTransactions)
             {
-                string transactionDateTime = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
+                string transactionDateTime   = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
                 string transactionDebtor     = transaction.TransactionDebtor;
                 string transactionCreditor   = transaction.TransactionCreditor;
                 string transactionNarrative  = transaction.TransactionNarrative;
@@ -94,7 +113,7 @@ namespace SupportBank
 
                 if(accountName == transactionCreditor)
                 {
-                   Console.WriteLine($"{transactionDateTime}\t{transactionDebtor}{tabSpacing}£ {transactionAmount}\t\t{transactionNarrative}");
+                   Console.WriteLine($"{transactionDateTime}\t{transactionDebtor}{tabSpacing}£ {transactionAmount:F2}\t\t{transactionNarrative}");
                 }   
             }
 
@@ -102,7 +121,7 @@ namespace SupportBank
             Console.WriteLine("Date:           Payee:          Amount:         Narrative:");
             foreach (Transaction transaction in BankTransactions)
             {
-                string transactionDateTime = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
+                string transactionDateTime   = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
                 string transactionDebtor     = transaction.TransactionDebtor;
                 string transactionCreditor   = transaction.TransactionCreditor;
                 string transactionNarrative  = transaction.TransactionNarrative;
@@ -111,7 +130,7 @@ namespace SupportBank
 
                 if(accountName == transactionDebtor)
                 {
-                   Console.WriteLine($"{transactionDateTime}\t{transactionCreditor}{tabSpacing}£ {transactionAmount}\t\t{transactionNarrative}");
+                   Console.WriteLine($"{transactionDateTime}\t{transactionCreditor}{tabSpacing}£ {transactionAmount:F2}\t\t{transactionNarrative}");
                 }                
             }
         }
