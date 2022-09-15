@@ -2,11 +2,13 @@ namespace SupportBank
 {
     class Bank
     {
-        public List<Account> BankAccounts = new List<Account>();
+        public List<Account> BankAccounts;
+        public List<Transaction> BankTransactions;
 
         public Bank()
         {
-            BankAccounts = new List<Account>();    
+            BankAccounts = new List<Account>();
+            BankTransactions = new List<Transaction>();    
         }
 
         public bool AddNewBankAccount(Account newBankAccount)
@@ -20,6 +22,11 @@ namespace SupportBank
             }
             BankAccounts.Add(newBankAccount);
             return true;
+        }
+
+        public void AddToBankTransactions(Transaction transaction)
+        {
+            BankTransactions.Add(transaction);
         }
     }
 }
