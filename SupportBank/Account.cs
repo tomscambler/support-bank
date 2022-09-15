@@ -2,9 +2,22 @@ namespace SupportBank
 {
     class Account
     {
-        //name
-        //balance?
-        //printBalance()
-        //printTransaction()?
-    }
+        public string AccountName { get; }
+        public decimal AccountCredit { get; set; }
+        public decimal AccountDebit { get; set; }
+        public decimal AccountBalance
+        {
+            get
+            {
+                return AccountCredit - AccountDebit;
+            }
+            
+        }
+        public Account(string accountName)
+        {
+            AccountName   = accountName;
+            AccountCredit = 0;
+            AccountDebit  = 0;
+        }
+  }
 }

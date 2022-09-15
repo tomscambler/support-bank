@@ -9,13 +9,31 @@ namespace SupportBank
             string[] lines = System.IO.File.ReadAllLines(@"./Transactions2014.csv");
              
             Ledger SupportBankLedger = new Ledger();
+            Bank SupportBank = new Bank();
 
             foreach(string line in lines[1..])
             {
                 string[] fields = line.Split(',');
-
-                SupportBankLedger.AddToLedger(new Transaction(fields[0], fields[1], fields[2], fields[3], fields[4]));
+                string transactionDateTime  = fields[0];
+                string transactionDebtor    = fields[1];
+                string transactionCreditor  = fields[2];
+                string transactionNarrative = fields[3];
+                string transactionAmount    = fields[4];
+                SupportBankLedger.AddToLedger
+                    (new Transaction
+                        (
+                            transactionDateTime, 
+                            transactionDebtor, 
+                            transactionCreditor, 
+                            transactionNarrative, 
+                            transactionAmount
+                        )
+                    );
+                SupportBank.AddNewBankAccount(new Account(transactionDebtor));
+                SupportBank.AddNewBankAccount(new Account (transactionCreditor));
             }
+
+
         }       
     }
 }
