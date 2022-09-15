@@ -38,6 +38,8 @@ namespace SupportBank
             SupportBank.UpdateAllBalances();
 
             SupportBank.PrintAllBalances();
+
+            SupportBank.PrintAccountTransactions("Jon A");
         }       
     }
 }

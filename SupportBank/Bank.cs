@@ -58,7 +58,7 @@ namespace SupportBank
 
         public void PrintAllBalances()
         {
-            Console.WriteLine($"Account Name            Balance");
+            Console.WriteLine($"\n Account Name            Balance");
             Console.WriteLine($"------------            -------");
 
             foreach(Account bankAccount in BankAccounts)
@@ -76,6 +76,43 @@ namespace SupportBank
                 }
                 //justify right (could be a conditional number of spaces?)
                 Console.WriteLine($"{bankAccount.AccountName}{tabSpacing}£{Math.Abs(bankAccount.AccountBalance):F2}\t{creditOrDebit}");
+            }
+        }
+
+        public void PrintAccountTransactions(string accountName)
+        {   
+            Console.WriteLine($"\n=========== Credits for {accountName}: ===========\n");
+            Console.WriteLine("Date:           Payer:          Amount:         Narrative:");
+            foreach (Transaction transaction in BankTransactions)
+            {
+                string transactionDateTime = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
+                string transactionDebtor     = transaction.TransactionDebtor;
+                string transactionCreditor   = transaction.TransactionCreditor;
+                string transactionNarrative  = transaction.TransactionNarrative;
+                decimal transactionAmount    = transaction.TransactionAmount;
+                string tabSpacing = new string('\t', (16-transactionDebtor.Length-1)/4);
+
+                if(accountName == transactionCreditor)
+                {
+                   Console.WriteLine($"{transactionDateTime}\t{transactionDebtor}{tabSpacing}£ {transactionAmount}\t\t{transactionNarrative}");
+                }   
+            }
+
+            Console.WriteLine($"\n=========== Debits for {accountName}: ===========\n");
+            Console.WriteLine("Date:           Payee:          Amount:         Narrative:");
+            foreach (Transaction transaction in BankTransactions)
+            {
+                string transactionDateTime = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
+                string transactionDebtor     = transaction.TransactionDebtor;
+                string transactionCreditor   = transaction.TransactionCreditor;
+                string transactionNarrative  = transaction.TransactionNarrative;
+                decimal transactionAmount    = transaction.TransactionAmount;
+                string tabSpacing = new string('\t', (16-transactionCreditor.Length-1)/4);
+
+                if(accountName == transactionDebtor)
+                {
+                   Console.WriteLine($"{transactionDateTime}\t{transactionCreditor}{tabSpacing}£ {transactionAmount}\t\t{transactionNarrative}");
+                }                
             }
         }
     }
