@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ClavYLH9k+3tRfiUuxMJL53Z9itPLH6LtYyRaKB683fZwUnH+QEhHMbuC4WLXuHqBd54rj5K5MLaFFLcLXV+7w==",
+  "dgSpecHash": "Y5vye9zr4WQ7x4jHer/nN/QvoFAbNff1jMuyWI3gtuLUDMw3eMPF9xLe8XM+1Pl5O2EvQma3XWPODZSIXgXG3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bharam\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
+  ],
   "logs": []
 }
