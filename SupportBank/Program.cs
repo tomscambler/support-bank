@@ -34,6 +34,10 @@ namespace SupportBank
                 SupportBank.AddNewBankAccount(new Account(transactionDebtor  ));
                 SupportBank.AddNewBankAccount(new Account(transactionCreditor));
             }
+
+            SupportBank.UpdateAllBalances();
+
+            SupportBank.PrintAllBalances();
         }       
     }
 }
