@@ -50,11 +50,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+      "projectUniqueName": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
       "projectName": "SupportBank",
-      "projectPath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+      "projectPath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
       "packagesPath": "C:\\Users\\tomsc\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\",
+      "outputPath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tomsc\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -104,13 +104,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

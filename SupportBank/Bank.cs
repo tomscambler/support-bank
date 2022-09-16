@@ -1,12 +1,7 @@
-using NLog;
-using NLog.Config;
-using NLog.Targets;
-
 namespace SupportBank
 {
     class Bank
     {
-        private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
         public List<Account> BankAccounts;
         public List<Transaction> BankTransactions;
 
@@ -30,7 +25,16 @@ namespace SupportBank
                        transactionNarrative = transactionField[3],
                        transactionAmount    = transactionField[4];
 
-                AddNewBankTransaction(new Transaction(transactionDateTime, transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
+                try
+                {
+                    AddNewBankTransaction(new Transaction(transactionDateTime, transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
+
+                }
+                catch(FormatException e)
+                {
+                    Console.Write("The following transaction was not accepted: ");
+                    Console.Write($"{transactionDateTime}, {transactionDebtor}, {transactionCreditor}, {transactionNarrative}, {transactionAmount}");
+                }
                 AddNewBankAccount(new Account(transactionDebtor  ));
                 AddNewBankAccount(new Account(transactionCreditor));
             }
