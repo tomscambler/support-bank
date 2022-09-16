@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace SupportBank
 {
@@ -8,6 +9,8 @@ namespace SupportBank
         {
             Bank SupportBank = new Bank();
             SupportBank.SeedBankWithTransactions("./DodgyTransactions2015.csv");
+            // string jsonFile = System.IO.File.ReadAllText("Transactions2013.json");
+            // Transaction? transaction =JsonConvert.DeserializeObject<Transaction>(jsonFile);
             SupportBank.UpdateAllBalances();
 
             //User interface

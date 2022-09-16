@@ -35,3 +35,5 @@ C:\Users\tomsc\Documents\GitHub\support-bank\SupportBank\obj\Debug\net6.0\Suppor
 C:\Users\bharam\work\support-bank\SupportBank\bin\Debug\net6.0\NLog.dll
 C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\SupportBank.csproj.CopyComplete
 >>>>>>> main
+C:\Users\bharam\work\support-bank\SupportBank\bin\Debug\net6.0\Json.Net.dll
+C:\Users\bharam\work\support-bank\SupportBank\bin\Debug\net6.0\Newtonsoft.Json.dll
