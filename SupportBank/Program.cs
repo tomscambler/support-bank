@@ -1,12 +1,23 @@
 ﻿using System;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
 
 namespace SupportBank
 {
     class Program
     {
+        private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
-            //Setting up of the Bank
+            var config = new LoggingConfiguration();
+            var target = new FileTarget { FileName = @"..\SupportBank.log", Layout = @"${longdate} ${level} - ${logger}: ${message}" };
+            config.AddTarget("File Logger", target);
+            config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
+            LogManager.Configuration = config;
+            
+            string[] lines = System.IO.File.ReadAllLines(@"./DodgyTransactions2015.csv");
+            
             Bank SupportBank = new Bank();
             SupportBank.SeedBankWithTransactions("./Transactions2014.csv");
             SupportBank.UpdateAllBalances();

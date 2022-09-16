@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj": {}
+    "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj": {
+    "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+        "projectUniqueName": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
         "projectName": "SupportBank",
-        "projectPath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+        "projectPath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
         "packagesPath": "C:\\Users\\tomsc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\",
+        "outputPath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tomsc\\AppData\\Roaming\\NuGet\\NuGet.Config"

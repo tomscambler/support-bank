@@ -1,7 +1,12 @@
+using NLog;
+using NLog.Config;
+using NLog.Targets;
+
 namespace SupportBank
 {
     class Bank
     {
+        private static readonly ILogger Logger = LogManager.GetCurrentClassLogger();
         public List<Account> BankAccounts;
         public List<Transaction> BankTransactions;
 
