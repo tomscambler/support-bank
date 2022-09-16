@@ -5,14 +5,10 @@
       "NLog/5.0.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/NLog.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/NLog.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/NLog.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/NLog.dll": {}
         }
       }
     }
@@ -49,19 +45,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bharam\\.nuget\\packages\\": {}
+    "C:\\Users\\tomsc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
+      "projectUniqueName": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
       "projectName": "SupportBank",
-      "projectPath": "c:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
-      "packagesPath": "C:\\Users\\bharam\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\bharam\\work\\support-bank\\SupportBank\\obj\\",
+      "projectPath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+      "packagesPath": "C:\\Users\\tomsc\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bharam\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\tomsc\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -96,8 +92,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -106,8 +101,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

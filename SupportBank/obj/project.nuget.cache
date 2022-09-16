@@ -1,10 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Y5vye9zr4WQ7x4jHer/nN/QvoFAbNff1jMuyWI3gtuLUDMw3eMPF9xLe8XM+1Pl5O2EvQma3XWPODZSIXgXG3w==",
+  "dgSpecHash": "9KJcPzSteEn5UXjYVpuPAKomIDPrgFqPXltF0pWT81BDPEC434TlORGvoEjkc5HJXQy+8CBv2xqRV8yCpp1bTQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
+  "projectFilePath": "c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bharam\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
+    "C:\\Users\\tomsc\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file c:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

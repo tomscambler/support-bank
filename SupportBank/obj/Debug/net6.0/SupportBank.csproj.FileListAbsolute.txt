@@ -28,5 +28,10 @@ C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\refint\SupportBan
 C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\SupportBank.pdb
 C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\SupportBank.genruntimeconfig.cache
 C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\ref\SupportBank.dll
+<<<<<<< HEAD
+C:\Users\tomsc\Documents\GitHub\support-bank\SupportBank\bin\Debug\net6.0\NLog.dll
+C:\Users\tomsc\Documents\GitHub\support-bank\SupportBank\obj\Debug\net6.0\SupportBank.csproj.CopyComplete
+=======
 C:\Users\bharam\work\support-bank\SupportBank\bin\Debug\net6.0\NLog.dll
 C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\SupportBank.csproj.CopyComplete
+>>>>>>> main

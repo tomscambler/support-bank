@@ -16,11 +16,31 @@ namespace SupportBank
             BankTransactions = new List<Transaction>();    
         }
 
-        public bool doesAccountExist(string possibleBankAccountName)
+        public void SeedBankWithTransactions(string fileName)
         {
-            foreach( Account existingBankAccount in BankAccounts)
+            string[] transactionLines = System.IO.File.ReadAllLines($"{fileName}");
+            
+            foreach(string transactionLine in transactionLines[1..])
             {
-                if(existingBankAccount.AccountName == possibleBankAccountName)
+                string[] transactionField = transactionLine.Split(',');
+
+                string transactionDateTime  = transactionField[0],
+                       transactionDebtor    = transactionField[1],
+                       transactionCreditor  = transactionField[2],
+                       transactionNarrative = transactionField[3],
+                       transactionAmount    = transactionField[4];
+
+                AddNewBankTransaction(new Transaction(transactionDateTime, transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
+                AddNewBankAccount(new Account(transactionDebtor  ));
+                AddNewBankAccount(new Account(transactionCreditor));
+            }
+        }
+
+        public bool doesAccountExist(Account possibleBankAccount)
+        {
+            foreach(Account existingBankAccount in BankAccounts)
+            {
+                if(possibleBankAccount.AccountName == existingBankAccount.AccountName)
                 {
                     return true;
                 }    
@@ -30,7 +50,7 @@ namespace SupportBank
 
         public bool AddNewBankAccount(Account newBankAccount)
         {
-            if(doesAccountExist(newBankAccount.AccountName))
+            if(doesAccountExist(newBankAccount))
             {
                 return false;
             }
@@ -38,26 +58,28 @@ namespace SupportBank
             return true;
         }
 
-        public void AddToBankTransactions(Transaction transaction)
+        public void AddNewBankTransaction(Transaction transaction)
         {
             BankTransactions.Add(transaction);
         }
 
-        public void UpdateBalance(Account bankAccount)
+        public void UpdateAccountBalanceFromTransactionList(Account thisBankAccount)
         {
             foreach(Transaction bankTransaction in BankTransactions)
             {
-                string creditAccount = bankTransaction.TransactionCreditor;
+                decimal transactionAmount = bankTransaction.TransactionAmount;
+                string thisBankAccountName = thisBankAccount.AccountName;
 
-                if (creditAccount == bankAccount.AccountName)
+                string theCreditor = bankTransaction.TransactionCreditor;
+                string theDebtor   = bankTransaction.TransactionDebtor;
+
+                if (thisBankAccountName == theCreditor)
                 {
-                    bankAccount.AccountBalance += bankTransaction.TransactionAmount;
+                    thisBankAccount.UpdateBalance(+transactionAmount);
                 }
-                string debitAccount = bankTransaction.TransactionDebtor;
-
-                if (debitAccount == bankAccount.AccountName)
+                else if (thisBankAccountName == theDebtor)
                 {
-                    bankAccount.AccountBalance -= bankTransaction.TransactionAmount;
+                    thisBankAccount.UpdateBalance(-transactionAmount);
                 }
             }
         }
@@ -66,30 +88,21 @@ namespace SupportBank
         {
             foreach(Account bankAccount in BankAccounts)
             {
-                UpdateBalance(bankAccount);
+                UpdateAccountBalanceFromTransactionList(bankAccount);
             }
         }
 
         public void PrintAllBalances()
         {
-            Console.WriteLine($"\nAccount Name            Balance");
-            Console.WriteLine($"------------            -------");
+            Console.WriteLine("\nAccount Name     Balance");
+            Console.WriteLine("------------    ---------");
 
             foreach(Account bankAccount in BankAccounts)
             {
-                string tabSpacing = new string('\t', (20-bankAccount.AccountName.Length-1)/4);
-                //add C or D depending on sign of balance
-                string creditOrDebit;
-                if(bankAccount.AccountBalance<0)
-                {
-                    creditOrDebit = "D";
-                }
-                else
-                {
-                    creditOrDebit = "C";
-                }
-                //justify right (could be a conditional number of spaces?)
-                Console.WriteLine($"{bankAccount.AccountName}{tabSpacing}£ {Math.Abs(bankAccount.AccountBalance):F2}\t{creditOrDebit}");
+                string  tabSpacing    = new string('\t', (16-bankAccount.AccountName.Length-1)/4);
+                string  creditOrDebit = bankAccount.AccountBalance<0 ? "D" : "C";
+                decimal balanceAmount = Math.Abs(bankAccount.AccountBalance);
+                Console.WriteLine($"{bankAccount.AccountName}{tabSpacing}£ {balanceAmount.ToString("0.00").PadLeft(5)}\t{creditOrDebit}");
             }
         }
 
@@ -102,11 +115,11 @@ namespace SupportBank
             Console.WriteLine("\n");
         }
 
-
         public void PrintAccountTransactions(string accountName)
         {   
-            Console.WriteLine($"\n=========== Credits for {accountName}: ===========\n");
-            Console.WriteLine("Date:           Payer:          Amount:         Narrative:");
+            string  printoutCredits = "", printoutDebits = "";
+            decimal totalCredits    = 0 , totalDebits    = 0 ;
+
             foreach (Transaction transaction in BankTransactions)
             {
                 string transactionDateTime   = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
@@ -114,30 +127,31 @@ namespace SupportBank
                 string transactionCreditor   = transaction.TransactionCreditor;
                 string transactionNarrative  = transaction.TransactionNarrative;
                 decimal transactionAmount    = transaction.TransactionAmount;
+
                 string tabSpacing = new string('\t', (16-transactionDebtor.Length-1)/4);
 
                 if(accountName == transactionCreditor)
                 {
-                   Console.WriteLine($"{transactionDateTime}\t{transactionDebtor}{tabSpacing}£ {transactionAmount:F2}\t\t{transactionNarrative}");
+                   printoutCredits += $"{transactionDateTime.PadRight(16)}{transactionDebtor.PadRight(12)}£ {transactionAmount.ToString("0.00").PadLeft(5)}\t{transactionNarrative}\n";
+                   totalCredits    += transactionAmount;
                 }   
-            }
-
-            Console.WriteLine($"\n=========== Debits for {accountName}: ===========\n");
-            Console.WriteLine("Date:           Payee:          Amount:         Narrative:");
-            foreach (Transaction transaction in BankTransactions)
-            {
-                string transactionDateTime   = transaction.TransactionDateTime.ToString("dd/MM/yyyy");
-                string transactionDebtor     = transaction.TransactionDebtor;
-                string transactionCreditor   = transaction.TransactionCreditor;
-                string transactionNarrative  = transaction.TransactionNarrative;
-                decimal transactionAmount    = transaction.TransactionAmount;
-                string tabSpacing = new string('\t', (16-transactionCreditor.Length-1)/4);
-
-                if(accountName == transactionDebtor)
+                else if(accountName == transactionDebtor)
                 {
-                   Console.WriteLine($"{transactionDateTime}\t{transactionCreditor}{tabSpacing}£ {transactionAmount:F2}\t\t{transactionNarrative}");
-                }                
+                   printoutDebits += $"{transactionDateTime.PadRight(16)}{transactionCreditor.PadRight(12)}£ {transactionAmount.ToString("0.00").PadLeft(5)}\t{transactionNarrative}\n";
+                   totalDebits    += transactionAmount;
+                } 
             }
+
+            Console.WriteLine($"\n=========== Credits for {accountName}: ===========\n");
+            Console.WriteLine("Date:           Payer:      Amount:     Narrative:");
+            Console.WriteLine("-----           ------      -------     ----------");
+            Console.WriteLine(printoutCredits);
+            Console.WriteLine($"Total Credits: £ {totalCredits:F2}");
+            Console.WriteLine($"\n=========== Debits for {accountName}: ===========\n");
+            Console.WriteLine("Date:           Payee:      Amount:     Narrative:");
+            Console.WriteLine("-----           ------      -------     ----------");
+            Console.WriteLine(printoutDebits);
+            Console.WriteLine($"Total Debits: £ {totalDebits:F2}");
         }
     }
 }
