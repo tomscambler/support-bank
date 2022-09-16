@@ -24,16 +24,15 @@ namespace SupportBank
                        transactionCreditor  = transactionField[2],
                        transactionNarrative = transactionField[3],
                        transactionAmount    = transactionField[4];
-
                 try
                 {
                     AddNewBankTransaction(new Transaction(transactionDateTime, transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
-
                 }
                 catch(FormatException e)
                 {
+                    e = new FormatException();
                     Console.Write("The following transaction was not accepted: ");
-                    Console.Write($"{transactionDateTime}, {transactionDebtor}, {transactionCreditor}, {transactionNarrative}, {transactionAmount}");
+                    Console.Write($"{transactionDateTime}, {transactionDebtor}, {transactionCreditor}, {transactionNarrative}, {transactionAmount}\n");
                 }
                 AddNewBankAccount(new Account(transactionDebtor  ));
                 AddNewBankAccount(new Account(transactionCreditor));
@@ -71,8 +70,8 @@ namespace SupportBank
         {
             foreach(Transaction bankTransaction in BankTransactions)
             {
-                decimal transactionAmount = bankTransaction.TransactionAmount;
-                string thisBankAccountName = thisBankAccount.AccountName;
+                decimal transactionAmount   = bankTransaction.TransactionAmount;
+                string  thisBankAccountName = thisBankAccount.AccountName;
 
                 string theCreditor = bankTransaction.TransactionCreditor;
                 string theDebtor   = bankTransaction.TransactionDebtor;

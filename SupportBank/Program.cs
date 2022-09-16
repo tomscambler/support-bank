@@ -11,7 +11,7 @@ namespace SupportBank
             SupportBank.UpdateAllBalances();
 
             //User interface
-            string userInput = "1";
+            string? userInput = "1";
             while (userInput != "0")
             {
                 List<string> menuOptions = new List<string> {"1", "2", "0"};
@@ -31,7 +31,7 @@ What would you like to do?
 
                     userInput = Console.ReadLine();
                 }
-                while (!(menuOptions.Contains(userInput)));
+                while (!(menuOptions.Contains(userInput!)));
 
                 switch(userInput)
                 {
@@ -40,7 +40,7 @@ What would you like to do?
                         break;
                     
                     case "2":
-                        string userAccountNameInput;
+                        string? userAccountNameInput;
 
                         do 
                         {
@@ -48,9 +48,9 @@ What would you like to do?
                             SupportBank.PrintAccountNames();
                             userAccountNameInput = Console.ReadLine();
                         }
-                        while (!SupportBank.doesAccountExist(new Account(userAccountNameInput)));
+                        while (!SupportBank.doesAccountExist(new Account(userAccountNameInput!)));
 
-                        SupportBank.PrintAccountTransactions(userAccountNameInput);
+                        SupportBank.PrintAccountTransactions(userAccountNameInput!);
                         break;
 
                     case "0":
