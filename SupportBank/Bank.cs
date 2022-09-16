@@ -130,7 +130,7 @@ namespace SupportBank
                    printoutCredits += $"{transactionDateTime.PadRight(16)}{transactionDebtor.PadRight(12)}£ {transactionAmount.ToString("0.00").PadLeft(5)}\t{transactionNarrative}\n";
                    totalCredits    += transactionAmount;
                 }   
-                if(accountName == transactionDebtor)
+                else if(accountName == transactionDebtor)
                 {
                    printoutDebits += $"{transactionDateTime.PadRight(16)}{transactionCreditor.PadRight(12)}£ {transactionAmount.ToString("0.00").PadLeft(5)}\t{transactionNarrative}\n";
                    totalDebits    += transactionAmount;
@@ -147,7 +147,6 @@ namespace SupportBank
             Console.WriteLine("-----           ------      -------     ----------");
             Console.WriteLine(printoutDebits);
             Console.WriteLine($"Total Debits: £ {totalDebits:F2}");
-
         }
     }
 }
