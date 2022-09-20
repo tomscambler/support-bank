@@ -37,3 +37,5 @@ C:\Users\bharam\work\support-bank\SupportBank\obj\Debug\net6.0\SupportBank.cspro
 >>>>>>> main
 C:\Users\bharam\work\support-bank\SupportBank\bin\Debug\net6.0\Json.Net.dll
 C:\Users\bharam\work\support-bank\SupportBank\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\tomsc\Documents\GitHub\support-bank\SupportBank\bin\Debug\net6.0\Json.Net.dll
+C:\Users\tomsc\Documents\GitHub\support-bank\SupportBank\bin\Debug\net6.0\Newtonsoft.Json.dll
