@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj": {}
+    "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj": {
+    "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
+        "projectUniqueName": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
         "projectName": "SupportBank",
-        "projectPath": "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
-        "packagesPath": "C:\\Users\\bharam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\obj\\",
+        "projectPath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+        "packagesPath": "C:\\Users\\tomsc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bharam\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\tomsc\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -57,8 +57,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -67,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

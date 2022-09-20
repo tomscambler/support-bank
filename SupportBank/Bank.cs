@@ -1,4 +1,5 @@
 using Newtonsoft.Json.Linq;
+using System.Xml;
 
 namespace SupportBank
 {
@@ -69,6 +70,49 @@ namespace SupportBank
                         }
                         AddNewBankAccount(new Account(transactionDebtor  ));
                         AddNewBankAccount(new Account(transactionCreditor));
+                    }
+                    break;
+                case "xml":
+                    XmlTextReader reader = new XmlTextReader($"{fileName}");
+                    List<string> transactionFields = new List<string>{};
+                    while (reader.Read())
+                    {
+                        switch(reader.NodeType)
+                        {
+                            case XmlNodeType.Element:
+                                if(reader.GetAttribute("Date")!=null)
+                                {
+                                    transactionFields.Add(reader.GetAttribute("Date"));
+                                }
+                                break;
+                            case XmlNodeType.Text:
+                                transactionFields.Add(reader.Value);
+                                break;
+                            case XmlNodeType.EndElement:
+                                if(reader.Name=="SupportTransaction")
+                                {
+                                    DateTime transactionDateTime  = DateTime.FromOADate(Double.Parse(transactionFields[0]));
+                                    string   transactionNarrative = transactionFields[1],
+                                             transactionAmount    = transactionFields[2],
+                                             transactionDebtor    = transactionFields[3],
+                                             transactionCreditor  = transactionFields[4];
+                                    try
+                                    {
+                                        AddNewBankTransaction(new Transaction(transactionDateTime.ToString(), transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
+                                    }
+                                    catch(FormatException e)
+                                    {
+                                        e = new FormatException();
+                                        Console.Write("The following transaction was not accepted: ");
+                                        Console.Write($"{transactionDateTime}, {transactionDebtor}, {transactionCreditor}, {transactionNarrative}, {transactionAmount}\n");
+                                    }
+                                    AddNewBankAccount(new Account(transactionDebtor  ));
+                                    AddNewBankAccount(new Account(transactionCreditor));
+                                    
+                                    transactionFields.Clear();
+                                }
+                                break;
+                        }
                     }
                     break;
                 default:
