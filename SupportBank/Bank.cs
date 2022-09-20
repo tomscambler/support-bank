@@ -91,14 +91,14 @@ namespace SupportBank
                             case XmlNodeType.EndElement:
                                 if(reader.Name=="SupportTransaction")
                                 {
-                                    DateTime transactionDateTime  = DateTime.FromOADate(Double.Parse(transactionFields[0]));
-                                    string   transactionNarrative = transactionFields[1],
-                                             transactionAmount    = transactionFields[2],
-                                             transactionDebtor    = transactionFields[3],
-                                             transactionCreditor  = transactionFields[4];
+                                    string transactionDateTime  = transactionFields[0],
+                                           transactionNarrative = transactionFields[1],
+                                           transactionAmount    = transactionFields[2],
+                                           transactionDebtor    = transactionFields[3],
+                                           transactionCreditor  = transactionFields[4];
                                     try
                                     {
-                                        AddNewBankTransaction(new Transaction(transactionDateTime.ToString(), transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
+                                        AddNewBankTransaction(new Transaction(DateTime.FromOADate(Double.Parse(transactionDateTime)).ToString(), transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
                                     }
                                     catch(FormatException e)
                                     {
