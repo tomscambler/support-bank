@@ -82,7 +82,7 @@ namespace SupportBank
                             case XmlNodeType.Element:
                                 if(reader.GetAttribute("Date")!=null)
                                 {
-                                    transactionFields.Add(reader.GetAttribute("Date"));
+                                    transactionFields.Add(reader.GetAttribute("Date")!);
                                 }
                                 break;
                             case XmlNodeType.Text:
