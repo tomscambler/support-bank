@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
+using System.Xml;
 
 namespace SupportBank
 {
@@ -9,6 +10,16 @@ namespace SupportBank
         {
             Bank SupportBank = new Bank();
             SupportBank.SeedBankWithTransactions("Transactions2013.json");
+           
+            XmlDocument document = new XmlDocument();
+            document.Load("./Transactions2012.xml");
+            
+            foreach(XmlNode node in document.DocumentElement.ChildNodes)
+            {
+                string text = node.InnerText;
+                // string attr = node.Attributes["Value"].InnerText;
+            }
+
             SupportBank.UpdateAllBalances();
 
             //User interface

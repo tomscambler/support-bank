@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "o7b0qBjvNt/4CegDXNsxaXEAgo1acfpizF2fppGLklE7DIY9O+DjwMgMJ9XE9SzlDmmN2VOdctxtkG708F6ThQ==",
+  "dgSpecHash": "Ss3BNClhTD4n6Va9SjF0dr40hX8jRuWKr9oYLP7j5/ouIdquHRwol9MQaI+qlLewaGcNscL1aIWXWnsLtzrJqA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tomsc\\Documents\\GitHub\\support-bank\\SupportBank\\SupportBank.csproj",
+  "projectFilePath": "C:\\Users\\bharam\\work\\support-bank\\SupportBank\\SupportBank.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\tomsc\\.nuget\\packages\\json.net\\1.0.33\\json.net.1.0.33.nupkg.sha512",
-    "C:\\Users\\tomsc\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
-    "C:\\Users\\tomsc\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
+    "C:\\Users\\bharam\\.nuget\\packages\\json.net\\1.0.33\\json.net.1.0.33.nupkg.sha512",
+    "C:\\Users\\bharam\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\bharam\\.nuget\\packages\\nlog\\5.0.4\\nlog.5.0.4.nupkg.sha512"
   ],
   "logs": []
 }
