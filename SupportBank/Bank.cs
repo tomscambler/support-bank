@@ -53,11 +53,11 @@ namespace SupportBank
             
                     foreach(JToken transactionLine in myArray)
                     {
-                        string transactionDateTime  = transactionLine["Date"].ToString(),
-                               transactionDebtor    = transactionLine["FromAccount"].ToString(),
-                               transactionCreditor  = transactionLine["ToAccount"].ToString(),
-                               transactionNarrative = transactionLine["Narrative"].ToString(),
-                               transactionAmount    = transactionLine["Amount"].ToString();
+                        string transactionDateTime  = transactionLine["Date"]!.ToString(),
+                               transactionDebtor    = transactionLine["FromAccount"]!.ToString(),
+                               transactionCreditor  = transactionLine["ToAccount"]!.ToString(),
+                               transactionNarrative = transactionLine["Narrative"]!.ToString(),
+                               transactionAmount    = transactionLine["Amount"]!.ToString();
                         try
                         {
                             AddNewBankTransaction(new Transaction(transactionDateTime, transactionDebtor, transactionCreditor, transactionNarrative, transactionAmount));
